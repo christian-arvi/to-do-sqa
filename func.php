@@ -46,9 +46,9 @@ function login($username, $password)
 
 
     if( $num_row === 1 ) {
-    session_start();
-      $_SESSION['userid'] = $username;
-      $_SESSION['a'] = $id;
+        session_start();
+        $_SESSION['userid'] = $username;
+        $_SESSION['a'] = $id;
       return true;
     }
 
@@ -78,6 +78,26 @@ function checkUser($username)
     }
 
     return true;
+
+}
+
+function addTask($accid,$task,$date)
+{
+
+    global $conn;
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO planner (accid,task,date) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $accid,$task,$date);
+        $stmt->execute();
+        
+        if($stmt){
+            $stmt->close();
+            $conn->close();
+            return true;
+
+        } else{
+            return false;
+        }
 
 }
 

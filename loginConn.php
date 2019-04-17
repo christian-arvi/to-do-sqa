@@ -11,9 +11,9 @@ include 'func.php';
         $isValidLog = login($user,$pass);
 
         if($isValidLog === true){
-            echo '<script language="javascript">';
-            echo 'alert("Login Success!")';
-            echo '</script>';
+            
+            header("Location: home.php");
+            
         } else{
             echo '<script language="javascript">';
             echo 'alert("Login Failed!")';
