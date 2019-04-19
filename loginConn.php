@@ -11,10 +11,11 @@ include 'func.php';
         $isValidLog = login($user,$pass);
 
         if($isValidLog === true){
-            
+
             header("Location: home.php");
-            
+
         } else{
+
             echo '<script language="javascript">';
             echo 'alert("Login Failed!")';
             echo '</script>';
