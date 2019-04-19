@@ -1,8 +1,4 @@
 
-<?php
-session_start();
-?>
-
 <!doctype html>
 <html>
  <head>
@@ -19,7 +15,7 @@ session_start();
 <body>
      
 
-    <form method="post" action="loginConn.php"> 
+    <form method="post" action="signupConn.php"> 
 
     <label id="first"> Username:</label><br/>
     <input type="text" name="username"><br/>
@@ -27,7 +23,20 @@ session_start();
     <label id="second"> Password:</label><br/>
     <input type="text" name="password"><br/>
 
-    <button type="submit" name="login">Login</button>
+    <label id="third"> Confirm Password:</label><br/>
+    <input type="text" name="confpassword"><br/>
+
+    <label id="fourth"> First name:</label><br/>
+    <input type="text" name="fname"><br/>
+
+    <label id="fifth"> Last name:</label><br/>
+    <input type="text" name="lname"><br/>
+
+    <label id="sixth"> Gender:</label><br/>
+    <input type="text" name="gender"><br/>
+    
+
+    <button type="submit" name="save">save</button>
     </form>
 
 </body>

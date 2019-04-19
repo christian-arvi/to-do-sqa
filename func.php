@@ -7,7 +7,7 @@ require 'conn.php';
 function register($user,$pass,$confpass,$fname,$lname,$gender){
     global $conn;
         if ($pass == $confpass){
-           
+
             $checkUser = checkUser($user);
 
             if($checkUser == true){
@@ -18,11 +18,11 @@ function register($user,$pass,$confpass,$fname,$lname,$gender){
             $stmt->close();
                 return true;
             } else{
-                
+
                 return false;
             }
-            
-                
+
+
         } else {
             return false;
         }
@@ -89,7 +89,7 @@ function addTask($accid,$task,$date)
         $stmt = $conn->prepare("INSERT INTO planner (accid,task,date) VALUES (?,?,?)");
         $stmt->bind_param("sss", $accid,$task,$date);
         $stmt->execute();
-        
+
         if($stmt){
             $stmt->close();
             $conn->close();
@@ -98,6 +98,54 @@ function addTask($accid,$task,$date)
         } else{
             return false;
         }
+
+}
+
+function deleteTask($id)
+{
+
+    global $conn;
+
+    // prepare and bind
+    $stmt = $conn->prepare("DELETE FROM planner WHERE id=$id");
+    $stmt->bind_param("sss", $id);
+    $stmt->execute();
+
+    if($stmt){
+        $stmt->close();
+        $conn->close();
+        return true;
+
+    } else{
+        return false;
+    }
+
+}
+
+function editTask($id)
+{
+
+    global $conn;
+
+    // prepare and bind
+    $stmt = $conn->prepare("SELECT * FROM planner WHERE id = '$id'");
+    $stmt->bind_param("sss", $id);
+    $stmt->execute();
+
+    if($stmt)
+{   $stmt = $conn->prepare("UPDATE branches SET
+    task='$task',
+    date='$date'
+    WHERE id='$id' ");
+    $stmt->bind_param("sss", $id);
+    $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return true;
+
+    } else{
+        return false;
+    }
 
 }
 
