@@ -1,32 +1,36 @@
+
 <?php
-// including the database connection file
+
 session_start();
 include 'conn.php';
 include 'func.php';
 
-if(isset($_POST['update']))
-{
-    $id = $_POST['id'];
 
-    $task = $_POST["task"];
-    $date = $_POST["date"];
+if(isset($_POST['submit'])){
 
-        //updating the table
-        $result = mysqli_query($mysqli, "UPDATE planner SET task='$task',date='$date' WHERE id=$id");
-
-        //redirectig to the display page. In our case, it is index.php
-        header("Location: home.php");
-    }
-
-//getting id from url
-$id = $_GET['id'];
-
-//selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM planner WHERE id=$id");
-
-while($res = mysqli_fetch_array($result))
-{
   $task = $_POST["task"];
   $date = $_POST["date"];
+  $id = $_POST['id'];
+
+  $editTask = editTask($id, $task, $date);
+
+  if($editTask === true){
+
+    header("Location: home.php");
+
+} else{
+    echo '<script language="javascript">';
+    echo 'alert("Task add Failed!")';
+    echo '</script>';
 }
+
+}
+// $result = mysqli_query($conn, "UPDATE planner SET task='$task',date='$date' WHERE id=$id");
+// // $stmt = $conn->prepare("UPDATE planner SET name='$task',age='$date' WHERE id=$id");
+// echo "hi";
+// echo "$id";
+// echo "$date";
+// echo "$task";
+//
+// }
 ?>

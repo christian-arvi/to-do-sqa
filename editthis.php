@@ -1,16 +1,23 @@
-<form name="form1" method="post" action="editTask.php">
-    <table border="0">
-        <tr>
-            <td>Task</td>
-            <td><input type="text" name="task" value="<?php echo $task;?>"></td>
-        </tr>
-        <tr>
-            <td>Date</td>
-            <td><input type="date" name="date" value="<?php echo $date;?>"></td>
-        </tr>
-        <tr>
-            <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-            <td><input type="submit" name="update" value="Update"></td>
-        </tr>
-    </table>
-</form>
+<?php
+session_start();
+include 'conn.php';
+include 'func.php';
+
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])){
+// GET id value
+$id = $_GET['id'];
+}
+?>
+
+        <form method="post" action="editTask.php">
+
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+                <input class="form-control" type="text" name="task" value="<?php echo $id ?>" placeholder="Task">
+
+                <input required class="form-control" type="date" name="date" value="<?php echo $date ?>" placeholder="Date">
+
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+        </form>

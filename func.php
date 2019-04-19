@@ -122,23 +122,17 @@ function deleteTask($id)
 
 }
 
-function editTask($id)
+function editTask($id, $task, $date)
 {
 
     global $conn;
 
     // prepare and bind
-    $stmt = $conn->prepare("SELECT * FROM planner WHERE id = '$id'");
-    $stmt->bind_param("sss", $id);
+    $stmt = $conn->prepare("UPDATE planner SET task='$task', date='$date' WHERE id=$id");
+    $stmt->bind_param("sss", $id, $task, $date);
     $stmt->execute();
 
-    if($stmt)
-{   $stmt = $conn->prepare("UPDATE branches SET
-    task='$task',
-    date='$date'
-    WHERE id='$id' ");
-    $stmt->bind_param("sss", $id);
-    $stmt->execute();
+    if($stmt){
         $stmt->close();
         $conn->close();
         return true;
