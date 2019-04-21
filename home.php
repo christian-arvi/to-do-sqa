@@ -18,7 +18,7 @@ session_start();
 
 <?php
     if (!isset($_SESSION['userid'])){
-        header('location:login.php');
+        header('location:index.php');
         }
         $id = $_SESSION['a'];
 
