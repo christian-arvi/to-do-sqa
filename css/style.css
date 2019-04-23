@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|VT323');
+
+body{
+    margin: 0;
+    padding: 0;
+    animation: bgcolor infinite 20s;
+    background-size: cover;
+    height: 102vh;
+    width: 100vw;
+    bottom: 0;
+}
+
+@keyframes bgcolor{
+    10%{
+        background: #00AEEF;
+    }
+    20%{
+        background: #EC008C;
+    }
+    40%{
+        background: #FFF200;
+    }
+    60%{
+        background: #000000;
+    }
+    80%{
+        background: #00AEEF;
+    }
+    100%{
+        background: #EC008C;
+    }
+}
+
+h1.title{
+    font-family: 'VT323', monospace;
+    font-size: 125px;
+    font-style: italic;
+    color: white;
+    /* text-shadow: 7px 8px #363639; */
+    text-shadow: 7px 8px #00AEEF;
+    margin-top: 20px;
+}
+
+#cmyk{
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: bolder;
+    margin-top: 0;
+    /* text-shadow: 1px 1px #FFF200; */
+}
+
+.font1{
+    font-family: 'Raleway', sans-serif;
+}
+
+.font1>p{
+    font-size: 25px;
+}
+#mini{
+    font-size: 15px;
+    margin-top: 230px;
+}
+#splash.hero{
+    width: 350px;
+    box-shadow: 7px 8px #363639;
+}
+
+a.signUp{
+    color: white;
+    font-size: 25px;
+    font-style: bold;
+    font-weight: 300;
+    text-shadow: 2px 2px #363639;
+}
+a.signUp:hover {
+    text-decoration: none;
+    margin: 0;
+    color: cyan;
+    font-size: 25px;
+    text-shadow: 3px 3px yellow;
+    font-style: italic;
+}
+
+.help{
+    margin-top: 40px;
+}
+#regCmyk.title{
+    text-shadow: 7px 8px magenta;
+    margin-top: 0;
+}
+#reg.hero{
+    width: 400px;
+    box-shadow: 7px 8px cyan;
+}
+
+#home.hero{
+    width: 700px;
+    box-shadow: 7px 8px cyan;
+}
+
+table{
+    width: 700px;
+    box-shadow: 7px 8px magenta;
+}
+
+@media only screen and (max-width: 768px){
+    #home.hero{
+        width: 350px;
+    }
+}
