@@ -13,7 +13,6 @@
 
 </head>
 <body>
-     
 
     <form method="post" action="signupConn.php"> 
 

@@ -15,8 +15,8 @@ session_start();
 
 </head>
 <body>
-     
-<?php 
+
+<?php
     if (!isset($_SESSION['userid'])){
         header('location:login.php');
         }
@@ -39,14 +39,14 @@ $conn->close();
 ?>
 
 
-    <form method="post" action="insertTask.php"> 
+    <form method="post" action="insertTask.php">
 
     <label id="first"> Task:</label><br/>
     <input type="text" name="task"><br/>
 
     <label id="second"> Date:</label><br/>
     <input type="date" name="date"><br/>
-    
+
     <button type="submit" name="insert">Create Task</button>
 
     </form>
