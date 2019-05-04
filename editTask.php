@@ -1,36 +1,24 @@
-
 <?php
-
 session_start();
 include 'conn.php';
 include 'func.php';
 
+  if(isset($_POST['submit']) && is_numeric($_GET['id'])){
 
-if(isset($_POST['submit'])){
+    $id = $_POST['id'];
+    $task = $_POST["task"];
+    $date = $_POST["date"];
 
-  $task = $_POST["task"];
-  $date = $_POST["date"];
-  $id = $_POST['id'];
+    $editTask = editTask($id, $task, $date);
 
-  $editTask = editTask($id, $task, $date);
-
-  if($editTask === true){
-
-    header("Location: home.php");
-
-} else{
-    echo '<script language="javascript">';
-    echo 'alert("Task add Failed!")';
-    echo '</script>';
-}
-
-}
-// $result = mysqli_query($conn, "UPDATE planner SET task='$task',date='$date' WHERE id=$id");
-// // $stmt = $conn->prepare("UPDATE planner SET name='$task',age='$date' WHERE id=$id");
-// echo "hi";
-// echo "$id";
-// echo "$date";
-// echo "$task";
-//
-// }
+    if($editTask === true){
+      header("Location: home.php");
+    }else{
+        echo '<script language="javascript">';
+        echo 'alert("Task add Failed!")';
+        echo '</script>';
+    }
+  }else{
+    echo 'huhu';
+  }
 ?>

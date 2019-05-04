@@ -24,9 +24,9 @@ include 'func.php';
             </div>
     <?php
 
-    if (!isset($_SESSION['userid'])){
-        header('location:index.php');
-        }
+    include 'conn.php';
+        
+        
         $id = $_SESSION['a'];
 
         $sql = "SELECT task, duedate ,id FROM planner WHERE accid = '$id'";
@@ -48,8 +48,93 @@ include 'func.php';
                         <td class="is-info"><b> <?php echo $row['task']; ?> </b></td>
                         <td class="is-primary"><b> <?php echo $row['duedate']; ?> </b></td>
                         <td> 
-                            <a href='editthis.php?id=<?php echo $row['id']; ?>'>
-                            <b>EDIT</b></button></a>
+                            <script>
+                            'use strict';
+                                document.addEventListener('DOMContentLoaded', function () {
+                                // Modals
+                                var rootEl = document.documentElement;
+                                var $modals = getAll('.modal');
+                                var $modalButtons = getAll('.modal-button');
+                                var $modalCloses = getAll('.modal-close, .modal-card-foot .button');
+
+                                if ($modalButtons.length > 0) {
+                                    $modalButtons.forEach(function ($el) {
+                                    $el.addEventListener('click', function () {
+                                        var target = $el.dataset.target;
+                                        var $target = document.getElementById(target);
+                                        rootEl.classList.add('is-clipped');
+                                        $target.classList.add('is-active');
+                                    });
+                                    });
+                                }
+
+                                if ($modalCloses.length > 0) {
+                                    $modalCloses.forEach(function ($el) {
+                                    $el.addEventListener('click', function () {
+                                        closeModals();
+                                    });
+                                    });
+                                }
+
+                                document.addEventListener('keydown', function (event) {
+                                    var e = event || window.event;
+                                    if (e.keyCode === 27) {
+                                    closeModals();
+                                    }
+                                });
+
+                                function closeModals() {
+                                    rootEl.classList.remove('is-clipped');
+                                    $modals.forEach(function ($el) {
+                                    $el.classList.remove('is-active');
+                                    });
+                                }
+
+                                // Functions
+                                function getAll(selector) {
+                                    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+                                }
+                                });
+
+                            </script>
+
+                            <button class="button modal-button" data-target="modal-ter" aria-haspopup="true">EDIT</button>
+                            <div id="modal-ter" class="modal">
+                                <div class="modal-background">
+                                    <div class="modal-card" style="margin-top: 250px;">
+                                        <section class="modal-card-body">
+                                            <div class="content">
+                                                <?php if (isset($_GET['id']) && is_numeric($_GET['id'])){
+                                                        $id = $_GET['id'];
+                                                        }?>
+
+                                                <form method="POST" action="editTask.php?id=<?php echo $row['id']; ?>">
+                                                    <div class="columns">
+                                                        <div class="column">
+                                                            <label class="font1"><b>EDIT TASK</b></label>
+                                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                                            <div class="control">
+                                                                <input class="input is-medium is-warning" style="width:10em;" type="text" name="task" value="<?php echo $row['task']; ?>" placeholder="to-do..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="column">
+                                                            <label class="font1"><b>DEADLINE</b></label>
+                                                            <div class="control">
+                                                                <input required class="input is-medium is-warning" style="width:10em;" type="date" name="date" value="<?php echo $row['duedate']; ?>" placeholder="dd/mm/yyy">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </section>
+                                                    <footer class="modal-card-foot">
+                                                        <button class="button is-danger font1" type="submit" name="sumbit"><b>UPDATE TASK</b></button>
+                                                        </form>
+                                                        <button class="button is-info font1"><b>CANCEL</b></button>
+                                                    </footer>
+                                                
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                         <td> 
                             <a href='delete.php?id=<?php echo $row['id']; ?>'>
