@@ -48,6 +48,10 @@ session_start();
                     <?php
                     
                     include 'func.php';
+
+                    if (isset($_SESSION['userid'])){
+                        header('location:home.php');
+                        }
                     
                     if(isset($_POST['login'])) :
                         $user = $_POST["username"];

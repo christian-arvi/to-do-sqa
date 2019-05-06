@@ -26,7 +26,9 @@ include 'func.php';
 
     include 'conn.php';
         
-        
+     if (!isset($_SESSION['userid'])){
+        header('location:index.php');
+        }
         $id = $_SESSION['a'];
 
         $sql = "SELECT task, duedate ,id FROM planner WHERE accid = '$id'";
