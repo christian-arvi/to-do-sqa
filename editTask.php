@@ -4,7 +4,7 @@ include 'conn.php';
 include 'func.php';
 
   if(isset($_POST['submit']) && is_numeric($_GET['id'])){
-
+    
     $id = $_POST['id'];
     $task = $_POST["task"];
     $date = $_POST["date"];
