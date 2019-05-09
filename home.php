@@ -6,15 +6,13 @@ include 'func.php';
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="$1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="$1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>CMYK TO-DO LIST</title>
 </head>
@@ -61,7 +59,7 @@ include 'func.php';
                         <td>
 
 
-                            <a data-target="#edit<?php echo $id; ?>" data-toggle="modal"><button type='button' class='btn btn-warning btn-sm'> Edit</button></a>
+                            <button class="button modal-button" data-target="modal-ter" aria-haspopup="true">EDIT</button>
                         </td>
                         <td>
                             <a href='delete.php?id=<?php echo $row['id']; ?>'>
@@ -69,39 +67,40 @@ include 'func.php';
                         </td>
                     </tr>
 
+                      <!--edit modal -->
+                            <div id="modal-ter" class="modal">
+                                <div class="modal-background">
+                                    <div class="modal-card" style="margin-top: 250px;">
+                                        <section class="modal-card-body">
+                                            <div class="content">
 
-                    <div class="container">
-                     <!-- Button to Open the Modal -->
-                     <!-- <div id="edit">
-                    <input type="image" src="/thesis/bootstrap/images/icon2.png" class="img-fluid image" data-target="#registeremp"></a>
-                     </div> -->
+                                                <form method="POST" action="editTask.php">
+                                                    <div class="columns">
+                                                        <div class="column">
+                                                            <label class="font1"><b>EDIT TASK</b></label>
+                                                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                                            <div class="control">
+                                                                <input class="input is-medium is-warning" style="width:10em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="column">
+                                                            <label class="font1"><b>DEADLINE</b></label>
+                                                            <div class="control">
+                                                                <input required class="input is-medium is-warning" style="width:10em;" type="date" name="date" value="<?php echo $duedate; ?>" placeholder="dd/mm/yyy">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </section>
+                                                    <footer class="modal-card-foot">
+                                                        <button class="button is-danger font1" type="submit" name="submit"><b>UPDATE TASK</b></button>
+                                                        </form>
+                                                        <button class="button is-info font1"><b>CANCEL</b></button>
+                                                    </footer>
 
-
-
-                           <div class="modal fade" id="edit<?php echo $id; ?>" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="editTask.php">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input class="input is-medium is-warning" style="width:10em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do..">
-            <input required class="input is-medium is-warning" style="width:10em;" type="date" name="date" value="<?php echo $duedate; ?>" placeholder="dd/mm/yyy">
-            <button class="button is-danger font1" type="submit" name="submit"><b>UPDATE TASK</b></button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
+                                    </div>
+                                </div>
+                            </div>
 
             <?php endwhile; ?>
 
