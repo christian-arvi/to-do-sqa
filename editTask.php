@@ -3,8 +3,8 @@ session_start();
 include 'conn.php';
 include 'func.php';
 
-  if(isset($_POST['submit']) && is_numeric($_GET['id'])){
-    
+  if(isset($_POST['submit'])){
+
     $id = $_POST['id'];
     $task = $_POST["task"];
     $date = $_POST["date"];
@@ -18,7 +18,5 @@ include 'func.php';
         echo 'alert("Task add Failed!")';
         echo '</script>';
     }
-  }else{
-    echo 'huhu';
   }
 ?>

@@ -11,6 +11,10 @@ include 'func.php';
     <meta name="description" content="$1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>CMYK TO-DO LIST</title>
 </head>
@@ -25,14 +29,14 @@ include 'func.php';
     <?php
 
     include 'conn.php';
-        
+
      if (!isset($_SESSION['userid'])){
         header('location:index.php');
         }
         $id = $_SESSION['a'];
 
         $sql = "SELECT task, duedate ,id FROM planner WHERE accid = '$id'";
-        $result = $conn->query($sql); 
+        $result = $conn->query($sql);
 
         if ($result->num_rows > 0) : ?>
 
@@ -45,113 +49,71 @@ include 'func.php';
                 <th class="is-warning"></th>
             </tr>
 
-            <?php while($row = $result->fetch_assoc()) : ?>
+            <?php while($row = $result->fetch_assoc()) :
+              $id = $row['id'];
+              $duedate =  $row['duedate'];
+              $task =  $row['task'];?>
+
+
                     <tr>
-                        <td class="is-info"><b> <?php echo $row['task']; ?> </b></td>
-                        <td class="is-primary"><b> <?php echo $row['duedate']; ?> </b></td>
-                        <td> 
-                            <script>
-                            'use strict';
-                                document.addEventListener('DOMContentLoaded', function () {
-                                // Modals
-                                var rootEl = document.documentElement;
-                                var $modals = getAll('.modal');
-                                var $modalButtons = getAll('.modal-button');
-                                var $modalCloses = getAll('.modal-close, .modal-card-foot .button');
+                        <td class="is-info"><b> <?php echo $task; ?> </b></td>
+                        <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
+                        <td>
 
-                                if ($modalButtons.length > 0) {
-                                    $modalButtons.forEach(function ($el) {
-                                    $el.addEventListener('click', function () {
-                                        var target = $el.dataset.target;
-                                        var $target = document.getElementById(target);
-                                        rootEl.classList.add('is-clipped');
-                                        $target.classList.add('is-active');
-                                    });
-                                    });
-                                }
 
-                                if ($modalCloses.length > 0) {
-                                    $modalCloses.forEach(function ($el) {
-                                    $el.addEventListener('click', function () {
-                                        closeModals();
-                                    });
-                                    });
-                                }
-
-                                document.addEventListener('keydown', function (event) {
-                                    var e = event || window.event;
-                                    if (e.keyCode === 27) {
-                                    closeModals();
-                                    }
-                                });
-
-                                function closeModals() {
-                                    rootEl.classList.remove('is-clipped');
-                                    $modals.forEach(function ($el) {
-                                    $el.classList.remove('is-active');
-                                    });
-                                }
-
-                                // Functions
-                                function getAll(selector) {
-                                    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
-                                }
-                                });
-
-                            </script>
-
-                            <button class="button modal-button" data-target="modal-ter" aria-haspopup="true">EDIT</button>
-                            <div id="modal-ter" class="modal">
-                                <div class="modal-background">
-                                    <div class="modal-card" style="margin-top: 250px;">
-                                        <section class="modal-card-body">
-                                            <div class="content">
-                                                <?php if (isset($_GET['id']) && is_numeric($_GET['id'])){
-                                                        $id = $_GET['id'];
-                                                        }?>
-
-                                                <form method="POST" action="editTask.php?id=<?php echo $row['id']; ?>">
-                                                    <div class="columns">
-                                                        <div class="column">
-                                                            <label class="font1"><b>EDIT TASK</b></label>
-                                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                                            <div class="control">
-                                                                <input class="input is-medium is-warning" style="width:10em;" type="text" name="task" value="<?php echo $row['task']; ?>" placeholder="to-do..">
-                                                            </div>
-                                                        </div>
-                                                        <div class="column">
-                                                            <label class="font1"><b>DEADLINE</b></label>
-                                                            <div class="control">
-                                                                <input required class="input is-medium is-warning" style="width:10em;" type="date" name="date" value="<?php echo $row['duedate']; ?>" placeholder="dd/mm/yyy">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                        </section>
-                                                    <footer class="modal-card-foot">
-                                                        <button class="button is-danger font1" type="submit" name="sumbit"><b>UPDATE TASK</b></button>
-                                                        </form>
-                                                        <button class="button is-info font1"><b>CANCEL</b></button>
-                                                    </footer>
-                                                
-                                    </div>
-                                </div>
-                            </div>
+                            <a data-target="#edit<?php echo $id; ?>" data-toggle="modal"><button type='button' class='btn btn-warning btn-sm'> Edit</button></a>
                         </td>
-                        <td> 
+                        <td>
                             <a href='delete.php?id=<?php echo $row['id']; ?>'>
                             <b>DONE</b></button></a>
                         </td>
                     </tr>
+
+
+                    <div class="container">
+                     <!-- Button to Open the Modal -->
+                     <!-- <div id="edit">
+                    <input type="image" src="/thesis/bootstrap/images/icon2.png" class="img-fluid image" data-target="#registeremp"></a>
+                     </div> -->
+
+
+
+                           <div class="modal fade" id="edit<?php echo $id; ?>" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="editTask.php">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input class="input is-medium is-warning" style="width:10em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do..">
+            <input required class="input is-medium is-warning" style="width:10em;" type="date" name="date" value="<?php echo $duedate; ?>" placeholder="dd/mm/yyy">
+            <button class="button is-danger font1" type="submit" name="submit"><b>UPDATE TASK</b></button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
             <?php endwhile; ?>
+
             </tbody>
             </table>
     <?php else : ?>
         <h1 class="is-white font1"><b>No task as of the moment.</b></h1><br>
-    <?php endif; 
+    <?php endif;
+
 
     $conn->close(); ?>
-        
+
         <section id="home" class="hero is-warning is-centered">
             <div class="hero-body">
                 <form method="post" action="insertTask.php">
@@ -186,5 +148,58 @@ include 'func.php';
     </div>
 </div>
 
+
+
+
+
+<script>
+'use strict';
+    document.addEventListener('DOMContentLoaded', function () {
+    // Modals
+    var rootEl = document.documentElement;
+    var $modals = getAll('.modal');
+    var $modalButtons = getAll('.modal-button');
+    var $modalCloses = getAll('.modal-close, .modal-card-foot .button');
+
+    if ($modalButtons.length > 0) {
+        $modalButtons.forEach(function ($el) {
+        $el.addEventListener('click', function () {
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+            rootEl.classList.add('is-clipped');
+            $target.classList.add('is-active');
+        });
+        });
+    }
+
+    if ($modalCloses.length > 0) {
+        $modalCloses.forEach(function ($el) {
+        $el.addEventListener('click', function () {
+            closeModals();
+        });
+        });
+    }
+
+    document.addEventListener('keydown', function (event) {
+        var e = event || window.event;
+        if (e.keyCode === 27) {
+        closeModals();
+        }
+    });
+
+    function closeModals() {
+        rootEl.classList.remove('is-clipped');
+        $modals.forEach(function ($el) {
+        $el.classList.remove('is-active');
+        });
+    }
+
+    // Functions
+    function getAll(selector) {
+        return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+    }
+    });
+
+</script>
 </body>
 </html>
