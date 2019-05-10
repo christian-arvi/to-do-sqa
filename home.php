@@ -22,7 +22,7 @@ include 'func.php';
         <div class="column"></div>
         <div class="column">
             <div class="has-text-centered">
-                <h1 class="title">Hi, ! </h1><br>
+                <h1 class="title">Hi, <?php echo $_SESSION['userid'] ?>! </h1><br>
             </div>
     <?php
 
