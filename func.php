@@ -103,8 +103,8 @@ function deleteTask($id)
     global $conn;
 
     // prepare and bind
-    $stmt = $conn->prepare("DELETE FROM planner WHERE id=$id");
-    $stmt->bind_param("sss", $id);
+    $stmt = $conn->prepare("UPDATE planner SET stat=1 WHERE id=$id");
+    $stmt->bind_param("s", $id);
     $stmt->execute();
 
     if($stmt){
