@@ -66,7 +66,7 @@ include 'func.php';
                 </tr>
 
 
-                
+
                     <div class="modal fade" id="edit<?php echo $id; ?>">
                         <div class="modal-background">
                             <div class="modal-card" style="margin-top: 200px;">
@@ -83,7 +83,7 @@ include 'func.php';
                                                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                                                         <label class="font1"><b>EDIT TASK</b></label>
                                                         <div class="control">
-                                                            <input class="input is-large is-warning" style="width:15em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do..">
+                                                            <input maxlength="35" class="input is-large is-warning" style="width:15em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do..">
                                                         </div>
                                                     </div>
                                                     <div class="column">
@@ -117,7 +117,7 @@ include 'func.php';
                         <div class="column">
                             <label class="font1"><b>NEW TASK</b></label>
                             <div class="control">
-                                <input class="input is-large" style="width:15em;" type="text" name="task" placeholder="to-do.." required>
+                                <input maxlength="35" class="input is-large" style="width:15em;" type="text" name="task" placeholder="to-do.." required>
                             </div>
                         </div>
 

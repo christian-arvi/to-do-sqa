@@ -21,22 +21,27 @@
         </div>
         <section id="reg" class="hero is-dark is-centered">
             <div class="hero-body field" style="padding: 2rem 1.5rem;">
-                <form method="post" style="padding-left: 30px;"> 
+                <form method="post" style="padding-left: 30px;">
 
                     <label class="font1"><b>USERNAME</b></label>
                     <div class="control">
                         <input class="input is-primary" style="width:18em;" type="text" name="username" placeholder="" required>
                     </div><br>
+                    <label class="font1"><b>BIRTHDATE</b></label>
+                    <div class="control">
+                        <input class="input is-primary" style="width:18em;" type="date" name="birthdate" placeholder="" required>
+                    </div><br>
+                    <label class="font1"><b>EMAIL</b></label>
+                    <div class="control">
+                        <input class="input is-primary" style="width:18em;" type="email" name="email" placeholder="" required>
+                    </div><br>
                     <label class="font1"><b>PASSWORD</b></label>
                     <div class="control">
-                        <input class="input is-primary" style="width:18em;" type="text" name="password" placeholder="" required>
+                        <input class="input is-primary" style="width:18em;" type="password" name="password" placeholder="" required>
                     </div><br>
                     <label class="font1"><b>CONFIRM PASSWORD</b></label>
                     <div class="control">
-                        <input class="input is-primary" style="width:18em;" type="text" name="confpassword" placeholder="" required>
-                    </div><br>
-                    <div class="control">
-                        <button class="button is-warning font1" type="submit" name="save"><b>SIGN UP</b></button>
+                        <input class="input is-primary" style="width:18em;" type="password" name="confpassword" placeholder="" required>
                     </div>
 
                     <?php
@@ -47,22 +52,24 @@
                         if(isset($_POST['save'])){
 
                             $user = $_POST["username"];
+                            $birthdate = $_POST["birthdate"];
+                            $email = $_POST["email"];
                             $pass = $_POST["password"];
                             $confpass = $_POST["confpassword"];
 
-                            $isValidReg = register($user,$pass,$confpass);
+                            $isValidReg = register($user,$birthdate,$email,$pass,$confpass);
 
                             if($isValidReg == true){ ?>
                                 <br> Registration done! <br>
                                 <a href="index.php"><b>Start now!</b></a>
                             <?php } else{
-                                echo '<script language="javascript">';
-                                echo 'alert("Please make sure both passwords are the same!")';
-                                echo '</script>';
-                            }    
+                                echo "<small>Please make sure both passwords are the same!</small>";
+                            }
                         }
                     ?>
-
+                  </br></br><div class="control">
+                        <button class="button is-warning font1" type="submit" name="save"><b>SIGN UP</b></button>
+                    </div>
                 </form>
             </div>
         </section>

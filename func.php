@@ -1,7 +1,7 @@
 <?php
 require 'conn.php';
 
-function register($user,$pass,$confpass){
+function register($user,$birthdate,$email,$pass,$confpass){
     global $conn;
         if ($pass == $confpass){
 
@@ -9,8 +9,8 @@ function register($user,$pass,$confpass){
 
             if($checkUser == true){
             // prepare and bind
-            $stmt = $conn->prepare("INSERT INTO accounts (username,pword) VALUES (?,?)");
-            $stmt->bind_param("ss", $user,$pass);
+            $stmt = $conn->prepare("INSERT INTO accounts (username, birthdate, email, pword) VALUES (?,?,?,?)");
+            $stmt->bind_param("ssss", $user,$birthdate,$email,$pass);
             $stmt->execute();
             $stmt->close();
                 return true;
