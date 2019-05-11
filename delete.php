@@ -7,6 +7,7 @@ include 'func.php';
 if (isset($_GET['id']) && is_numeric($_GET['id'])){
 // GET id value
 $id = $_GET['id'];
+
 // delete the entry
 
         $deleteTask = deleteTask($id);

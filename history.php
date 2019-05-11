@@ -35,9 +35,10 @@ include 'func.php';
         }
         $id = $_SESSION['a'];
 
-        $sql = "SELECT task, duedate ,id FROM planner WHERE accid = '$id' AND stat = 1";
+        $sql = "SELECT task, duedate ,id, expiry FROM planner WHERE accid = '$id' AND stat = 1";
         $result = $conn->query($sql);
-
+        $now = date('Y-m-d');
+      
         if ($result->num_rows > 0) : ?>
 
             <table class="table is-hoverable is-centered is-dark font1">
@@ -48,6 +49,8 @@ include 'func.php';
             </tr>
 
             <?php while($row = $result->fetch_assoc()) :
+              if($row['expiry'] > $now):
+            
               $id = $row['id'];
               $duedate =  $row['duedate'];
               $task =  $row['task'];?>
@@ -55,6 +58,7 @@ include 'func.php';
                     <td class="is-info"><b> <?php echo $task; ?> </b></td>
                     <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
                 </tr>
+                <?php endif; ?>
             <?php endwhile; ?>
             </tbody>
             </table>
@@ -66,8 +70,10 @@ include 'func.php';
 <br>
 
         <div class="control has-text-centered">
+
             <a class="signUp font1" href="home.php"><b>HOME</b></a> &nbsp &nbsp &nbsp &nbsp &nbsp
             <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
+
         </div>
 
         </div>
