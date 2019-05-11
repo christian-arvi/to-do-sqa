@@ -35,7 +35,7 @@ include 'func.php';
         }
         $id = $_SESSION['a'];
 
-        $sql = "SELECT task, duedate ,id FROM planner WHERE accid = '$id'";
+        $sql = "SELECT task, duedate ,id FROM planner WHERE accid = '$id' AND stat = 0";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) : ?>
@@ -136,6 +136,7 @@ include 'func.php';
         </section><br>
 
         <div class="control has-text-centered">
+            <a class="signUp font1" href="history.php"><b>HISTORY</b></a> &nbsp &nbsp &nbsp &nbsp &nbsp
             <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
         </div>
 
