@@ -64,9 +64,6 @@ include 'func.php';
                         <b>DONE</b></a>
                     </td>
                 </tr>
-
-
-
                     <div class="modal fade" id="edit<?php echo $id; ?>">
                         <div class="modal-background">
                             <div class="modal-card" style="margin-top: 200px;">
@@ -144,6 +141,8 @@ include 'func.php';
         <div class="column"></div>
     </div>
 </div>
+
+
 
 
 <script>

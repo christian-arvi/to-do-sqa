@@ -141,4 +141,26 @@ function editTask($id, $task, $date)
 
 }
 
+function clearHistory($id)
+{
+
+    global $conn;
+
+    $stat = 2;
+    // prepare and bind
+    $stmt = $conn->prepare("UPDATE planner SET stat=$stat WHERE accid=$id AND stat=1");
+    $stmt->bind_param("ss", $id,$stat);
+    $stmt->execute();
+
+    if($stmt){
+        $stmt->close();
+        $conn->close();
+        return true;
+
+    } else{
+        return false;
+    }
+
+}
+
 ?>

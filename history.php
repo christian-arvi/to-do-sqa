@@ -71,7 +71,8 @@ include 'func.php';
 
         <div class="control has-text-centered">
 
-            <a class="signUp font1" href="home.php"><b>HOME</b></a> &nbsp &nbsp &nbsp &nbsp &nbsp
+            <a class="signUp font1" href="home.php"><b>HOME</b></a><br>
+            <a class="signUp font1" href="clearhistory.php"><b>CLEAR HISTORY</b></a><br>
             <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
 
         </div>
