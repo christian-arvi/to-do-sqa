@@ -120,6 +120,29 @@ function deleteTask($id)
 
 }
 
+function undoTask($id)
+{
+
+    global $conn;
+    $today=date('y-m-d');
+    $date = strtotime($today);
+    $newDate = date("Y-m-d", strtotime("+1 month", $date));
+    // prepare and bind
+    $stmt = $conn->prepare("UPDATE planner SET stat=0, expiry = '$newDate' WHERE id=$id");
+    $stmt->bind_param("ss", $id);
+    $stmt->execute();
+
+    if($stmt){
+        $stmt->close();
+        $conn->close();
+        return true;
+
+    } else{
+        return false;
+    }
+
+}
+
 function editTask($id, $task, $date)
 {
 
