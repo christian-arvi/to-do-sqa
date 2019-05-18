@@ -65,7 +65,10 @@ include 'func.php';
                     </td>
                 </tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a58f0564631df9b1f39b37ab7fa9b461ad2cf16
 =======
 >>>>>>> 1a58f0564631df9b1f39b37ab7fa9b461ad2cf16
                     <div class="modal fade" id="edit<?php echo $id; ?>">
