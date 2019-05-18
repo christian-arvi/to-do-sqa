@@ -50,12 +50,18 @@ include 'func.php';
             </tr>
 
             <?php while($row = $result->fetch_assoc()) :
+                $today=date('Y-m-d');
                 $id = $row['id'];
                 $duedate =  $row['duedate'];
                 $task =  $row['task'];?>
                 <tr>
+                <?php if ($today >= $duedate):?>
+                    <td class="is-danger"><b> <?php echo $task; ?> </b></td>
+                    <td class="is-danger"><b> <?php echo $duedate; ?> </b></td>
+                <?php else: ?>
                     <td class="is-info"><b> <?php echo $task; ?> </b></td>
                     <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
+                <?php endif; ?>
                     <td>
                         <a data-target="#edit<?php echo $id; ?>" data-toggle="modal"><button type='button' class='btn btn-warning btn-sm '> Edit</button></a>
                     </td>
@@ -107,7 +113,7 @@ include 'func.php';
         <h1 class="is-white font1" style="font-size: 20px; color: white;"><b>No task as of the moment.</b></h1><br>
     <?php endif;
     $conn->close(); ?>
-
+    <br>
         <section id="home" class="hero is-warning is-centered">
             <div class="hero-body">
                 <form method="post" action="insertTask.php">
