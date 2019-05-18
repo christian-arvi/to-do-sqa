@@ -13,8 +13,8 @@ include 'func.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>CMYK TO-DO LIST</title>
 </head>
@@ -30,7 +30,7 @@ include 'func.php';
 
     include 'conn.php';
 
-     if (!isset($_SESSION['userid'])){
+    if (!isset($_SESSION['userid'])){
         header('location:index.php');
         }
         $id = $_SESSION['a'];
@@ -57,20 +57,14 @@ include 'func.php';
                     <td class="is-info"><b> <?php echo $task; ?> </b></td>
                     <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
                     <td>
-                        <a data-target="#edit<?php echo $id; ?>" data-toggle="modal"><button type='button' class='btn btn-warning btn-sm'> Edit</button></a>
+                        <a data-target="#edit<?php echo $id; ?>" data-toggle="modal"><button type='button' class='btn btn-warning btn-sm '> Edit</button></a>
                     </td>
                     <td>
                         <a href='delete.php?id=<?php echo $row['id']; ?>'>
                         <b>DONE</b></a>
                     </td>
                 </tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 1a58f0564631df9b1f39b37ab7fa9b461ad2cf16
-=======
->>>>>>> 1a58f0564631df9b1f39b37ab7fa9b461ad2cf16
                     <div class="modal fade" id="edit<?php echo $id; ?>">
                         <div class="modal-background">
                             <div class="modal-card" style="margin-top: 200px;">
@@ -110,7 +104,7 @@ include 'func.php';
             </tbody>
             </table>
     <?php else : ?>
-        <h1 class="is-white font1" style="font-size: 25px; color: white;"><b>No task as of the moment.</b></h1><br>
+        <h1 class="is-white font1" style="font-size: 20px; color: white;"><b>No task as of the moment.</b></h1><br>
     <?php endif;
     $conn->close(); ?>
 
@@ -139,17 +133,16 @@ include 'func.php';
             </div>
         </section><br>
 
-        <div class="control has-text-centered">
-            <a class="signUp font1" href="history.php"><b>HISTORY</b></a> &nbsp &nbsp &nbsp &nbsp &nbsp
-            <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
+        <div class="control has-text-centered" style="padding-top: 30px;">
+            <a class="signUp font1" href="logout.php" ><b>LOGOUT</b></a>
+            <br><br>
+            <a class="font1" href="history.php" style="font-size: 15px; text-decoration: none;"><b>VIEW HISTORY</b></a>
         </div>
 
         </div>
         <div class="column"></div>
     </div>
 </div>
-
-
 
 
 <script>

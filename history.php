@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'func.php';
-// $name = name($username);
 ?>
 <!doctype html>
 <html>
@@ -30,7 +29,7 @@ include 'func.php';
 
     include 'conn.php';
 
-     if (!isset($_SESSION['userid'])){
+    if (!isset($_SESSION['userid'])){
         header('location:index.php');
         }
         $id = $_SESSION['a'];
@@ -46,22 +45,25 @@ include 'func.php';
             <tr>
                 <th class="is-warning">Task</th>
                 <th class="is-warning">Date</th>
+                <th class="is-warning"></th>
+
             </tr>
 
             <?php while($row = $result->fetch_assoc()) :
-              if($row['expiry'] > $now):
+                if($row['expiry'] > $now):
 
-              $id = $row['id'];
-              $duedate =  $row['duedate'];
-              $task =  $row['task'];?>
-                <tr>
-                    <td class="is-info"><b> <?php echo $task; ?> </b></td>
-                    <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
-                    <td>
-                        <a href='undo.php?id=<?php echo $row['id']; ?>'>
-                        <b>Mark as undone</b></a>
-                    </td>
-                </tr>
+                    $id = $row['id'];
+                    $duedate =  $row['duedate'];
+                    $task =  $row['task'];?>
+                        <tr>
+                            <td class="is-info"><b> <?php echo $task; ?> </b></td>
+                            <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
+                            <td>
+                                <a href='undo.php?id=<?php echo $row['id']; ?>' style="text-decoration: none;">
+                                Mark as<br><b> UNDONE</b></a>
+                            </td>
+                        </tr>
+
                 <?php endif; ?>
             <?php endwhile; ?>
             </tbody>
@@ -71,13 +73,21 @@ include 'func.php';
     <?php endif;
     $conn->close(); ?>
 
-<br>
-
+        <br>
         <div class="control has-text-centered">
 
-            <a class="signUp font1" href="home.php"><b>HOME</b></a><br>
-            <a class="signUp font1" href="clearhistory.php"><b>CLEAR HISTORY</b></a><br>
-            <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
+            <br>
+            <a class="font1" href="clearhistory.php" style="font-size: 15px; text-decoration: none;"><b>CLEAR HISTORY</b></a>
+            <br><br>
+            <div class="columns">
+                <div class="column">
+                    <a class="signUp font1" href="home.php"><b>HOME</b></a>
+                </div>
+                <div class="column">
+                    <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
+                </div>
+            </div>
+            <br>
 
         </div>
 
@@ -85,7 +95,6 @@ include 'func.php';
         <div class="column"></div>
     </div>
 </div>
-
 
 <script>
 'use strict';
