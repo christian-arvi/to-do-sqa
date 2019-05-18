@@ -83,16 +83,8 @@ include 'func.php';
             <br>
             <a class="font1" href="clearhistory.php" style="font-size: 15px; text-decoration: none;"><b>CLEAR HISTORY</b></a>
             <br><br>
-            <div class="columns">
-                <div class="column">
-                    <a class="signUp font1" href="home.php"><b>HOME</b></a>
-                </div>
-                <div class="column">
-                    <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
-                </div>
-            </div>
+            <a class="signUp font1" href="home.php"><b>HOME</b></a>
             <br>
-
         </div>
 
         </div>

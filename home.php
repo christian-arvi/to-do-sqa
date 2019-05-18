@@ -140,9 +140,10 @@ include 'func.php';
         </section><br>
 
         <div class="control has-text-centered" style="padding-top: 30px;">
-            <a class="signUp font1" href="logout.php" ><b>LOGOUT</b></a>
-            <br><br>
             <a class="font1" href="history.php" style="font-size: 15px; text-decoration: none;"><b>VIEW HISTORY</b></a>
+            <br><br>
+            <a class="signUp font1" href="logout.php" ><b>LOGOUT</b></a>
+            
             <br><br>
         </div>
 
