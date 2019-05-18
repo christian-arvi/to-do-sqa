@@ -143,6 +143,7 @@ include 'func.php';
             <a class="signUp font1" href="logout.php" ><b>LOGOUT</b></a>
             <br><br>
             <a class="font1" href="history.php" style="font-size: 15px; text-decoration: none;"><b>VIEW HISTORY</b></a>
+            <br><br>
         </div>
 
         </div>

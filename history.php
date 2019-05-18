@@ -20,7 +20,7 @@ include 'func.php';
 <body>
 <div class="container is-widescreen">
     <div class="columns is-mobile is-centered">
-        <div class="column"></div>
+        <div class="column is-3"></div>
         <div class="column">
             <div class="has-text-centered">
                 <h1 class="title is-capitalized">Task History</h1><br>
@@ -71,7 +71,7 @@ include 'func.php';
     <?php else : ?>
     <section id="home" class="hero is-info is-centered">
         <div class="hero-body">
-            <h1 class="is-white font1 has-text-centered" style="font-size: 25px; color: white;"><b>No task as of the moment.</b></h1><br>
+            <h1 class="is-white font1 has-text-centered" style="font-size: 25px; color: white;"><b>No tasks history.</b></h1><br>
         </div>
     </section>
     <?php endif;
@@ -96,7 +96,7 @@ include 'func.php';
         </div>
 
         </div>
-        <div class="column"></div>
+        <div class="column is-3"></div>
     </div>
 </div>
 
