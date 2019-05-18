@@ -19,14 +19,16 @@
             <h1 id="regCmyk" class="title" style="margin-bottom:0;">CMYK</h1>
                 <u>C</u>reate <u>MY</u> tas<u>K</u>
         </div>
+
         <section id="reg" class="hero is-dark is-centered">
             <div class="hero-body field" style="padding: 2rem 1.5rem;">
                 <form method="post" style="padding-left: 30px;">
 
                     <label class="font1"><b>USERNAME</b></label>
                     <div class="control">
-                        <input class="input is-primary" style="width:18em;" type="text" name="username" placeholder="" required>
+                        <input class="input is-primary" maxlength="25" style="width:18em;" type="text" name="username" placeholder="" required>
                     </div><br>
+
                     <label class="font1"><b>BIRTHDATE</b></label>
                     <div class="control">
                         <input class="input is-primary" style="width:18em;" type="date" name="birthdate" placeholder="" required>
@@ -46,26 +48,30 @@
 
                     <?php
 
-                        include 'conn.php';
-                        include 'func.php';
+                    include 'conn.php';
+                    include 'func.php';
 
-                        if(isset($_POST['save'])):
+                    if(isset($_POST['save'])):
 
-                            $user = $_POST["username"];
-                            $birthdate = $_POST["birthdate"];
-                            $email = $_POST["email"];
-                            $pass = $_POST["password"];
-                            $confpass = $_POST["confpassword"];
+                        $user = $_POST["username"];
+                        $birthdate = $_POST["birthdate"];
+                        $email = $_POST["email"];
+                        $pass = $_POST["password"];
+                        $confpass = $_POST["confpassword"];
 
-                            $isValidReg = register($user,$birthdate,$email,$pass,$confpass);
+                        $isValidReg = register($user,$birthdate,$email,$pass,$confpass);
 
-                            if($isValidReg == true): ?>
-                                <br> Registration done! <br>
-                                <a href="index.php"><b>Start now!</b></a>
-                            <?php else : ?>
-                                <small>Please make sure both passwords are the same.</small></br>
-                        <?php endif;
-                        endif;?>
+                    if ($isValidReg == True): ?>
+                        <br> Registration done! <br>
+                        <a href="index.php"><b>Start now!</b></a>
+                    <?php //elseif (($isValidReg != True) && ($pass != $confpass)) : ?>
+                        <!-- <br><small>Username already exist. <br>Double-check password entry.</small></br> -->
+                    <?php elseif ($pass != $confpass): ?>
+                        <br><small>Please make sure both passwords are the same.</small></br>
+                    <?php else : ?>
+                        <br><small>Username already taken. Please try again.</small></br>
+                <?php endif;
+                endif;?>
                 </br><div class="control">
                         <button class="button is-warning font1" type="submit" name="save"><b>SIGN UP</b></button>
                     </div>

@@ -5,7 +5,7 @@ body{
     padding: 0;
     animation: bgcolor infinite 20s;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 102vh;
     width: 100vw;
     bottom: 0;
 }
@@ -108,5 +108,17 @@ table{
 @media only screen and (max-width: 768px){
     #home.hero{
         width: 350px;
+    }
+
+    .funky{
+        margin-top: 30px;
+    }
+
+    #mini{
+        margin-top: 0;
+    }
+
+    h1.title{
+        font-size: 80px;
     }
 }

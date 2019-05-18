@@ -69,7 +69,11 @@ include 'func.php';
             </tbody>
             </table>
     <?php else : ?>
-        <h1 class="is-white font1" style="font-size: 25px; color: white;"><b>No task as of the moment.</b></h1><br>
+    <section id="home" class="hero is-info is-centered">
+        <div class="hero-body">
+            <h1 class="is-white font1 has-text-centered" style="font-size: 25px; color: white;"><b>No task as of the moment.</b></h1><br>
+        </div>
+    </section>
     <?php endif;
     $conn->close(); ?>
 
