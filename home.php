@@ -87,13 +87,13 @@ include 'func.php';
                                                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                                                         <label class="font1"><b>EDIT TASK</b></label>
                                                         <div class="control">
-                                                            <input maxlength="35" class="input is-large is-warning" style="width:15em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do..">
+                                                            <input maxlength="35" class="input is-large is-warning" style="width:15em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do.." required>
                                                         </div>
                                                     </div>
                                                     <div class="column">
                                                         <label class="font1"><b>DEADLINE</b></label>
                                                         <div class="control">
-                                                            <input required class="input is-large is-warning" style="width:15em;" type="date" name="date" value="<?php echo $duedate; ?>" placeholder="dd/mm/yyy">
+                                                            <input required class="input is-large is-warning" style="width:15em;" type="date" name="date" value="<?php echo $duedate; ?>" placeholder="dd/mm/yyy" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -151,7 +151,6 @@ include 'func.php';
         <div class="column"></div>
     </div>
 </div>
-
 
 <script>
 'use strict';
