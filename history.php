@@ -38,7 +38,7 @@ include 'func.php';
         $sql = "SELECT task, duedate ,id, expiry FROM planner WHERE accid = '$id' AND stat = 1";
         $result = $conn->query($sql);
         $now = date('Y-m-d');
-      
+
         if ($result->num_rows > 0) : ?>
 
             <table class="table is-hoverable is-centered is-dark font1">
@@ -50,13 +50,17 @@ include 'func.php';
 
             <?php while($row = $result->fetch_assoc()) :
               if($row['expiry'] > $now):
-            
+
               $id = $row['id'];
               $duedate =  $row['duedate'];
               $task =  $row['task'];?>
                 <tr>
                     <td class="is-info"><b> <?php echo $task; ?> </b></td>
                     <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
+                    <td>
+                        <a href='undo.php?id=<?php echo $row['id']; ?>'>
+                        <b>Mark as undone</b></a>
+                    </td>
                 </tr>
                 <?php endif; ?>
             <?php endwhile; ?>
@@ -71,7 +75,8 @@ include 'func.php';
 
         <div class="control has-text-centered">
 
-            <a class="signUp font1" href="home.php"><b>HOME</b></a> &nbsp &nbsp &nbsp &nbsp &nbsp
+            <a class="signUp font1" href="home.php"><b>HOME</b></a><br>
+            <a class="signUp font1" href="clearhistory.php"><b>CLEAR HISTORY</b></a><br>
             <a class="signUp font1" href="logout.php"><b>LOGOUT</b></a>
 
         </div>

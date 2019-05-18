@@ -120,6 +120,29 @@ function deleteTask($id)
 
 }
 
+function undoTask($id)
+{
+
+    global $conn;
+    $today=date('y-m-d');
+    $date = strtotime($today);
+    $newDate = date("Y-m-d", strtotime("+1 month", $date));
+    // prepare and bind
+    $stmt = $conn->prepare("UPDATE planner SET stat=0, expiry = '$newDate' WHERE id=$id");
+    $stmt->bind_param("ss", $id);
+    $stmt->execute();
+
+    if($stmt){
+        $stmt->close();
+        $conn->close();
+        return true;
+
+    } else{
+        return false;
+    }
+
+}
+
 function editTask($id, $task, $date)
 {
 
@@ -128,6 +151,28 @@ function editTask($id, $task, $date)
     // prepare and bind
     $stmt = $conn->prepare("UPDATE planner SET task='$task', duedate='$date' WHERE id=$id");
     $stmt->bind_param("sss", $id, $task, $date);
+    $stmt->execute();
+
+    if($stmt){
+        $stmt->close();
+        $conn->close();
+        return true;
+
+    } else{
+        return false;
+    }
+
+}
+
+function clearHistory($id)
+{
+
+    global $conn;
+
+    $stat = 2;
+    // prepare and bind
+    $stmt = $conn->prepare("UPDATE planner SET stat=$stat WHERE accid=$id AND stat=1");
+    $stmt->bind_param("ss", $id,$stat);
     $stmt->execute();
 
     if($stmt){

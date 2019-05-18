@@ -49,7 +49,7 @@
                         include 'conn.php';
                         include 'func.php';
 
-                        if(isset($_POST['save'])){
+                        if(isset($_POST['save'])):
 
                             $user = $_POST["username"];
                             $birthdate = $_POST["birthdate"];
@@ -59,15 +59,14 @@
 
                             $isValidReg = register($user,$birthdate,$email,$pass,$confpass);
 
-                            if($isValidReg == true){ ?>
+                            if($isValidReg == true): ?>
                                 <br> Registration done! <br>
                                 <a href="index.php"><b>Start now!</b></a>
-                            <?php } else{
-                                echo "<small>Please make sure both passwords are the same!</small>";
-                            }
-                        }
-                    ?>
-                  </br></br><div class="control">
+                            <?php else : ?>
+                                <small>Please make sure both passwords are the same.</small></br>
+                        <?php endif;
+                        endif;?>
+                </br><div class="control">
                         <button class="button is-warning font1" type="submit" name="save"><b>SIGN UP</b></button>
                     </div>
                 </form>

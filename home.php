@@ -50,9 +50,9 @@ include 'func.php';
             </tr>
 
             <?php while($row = $result->fetch_assoc()) :
-              $id = $row['id'];
-              $duedate =  $row['duedate'];
-              $task =  $row['task'];?>
+                $id = $row['id'];
+                $duedate =  $row['duedate'];
+                $task =  $row['task'];?>
                 <tr>
                     <td class="is-info"><b> <?php echo $task; ?> </b></td>
                     <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
@@ -64,9 +64,10 @@ include 'func.php';
                         <b>DONE</b></a>
                     </td>
                 </tr>
+<<<<<<< HEAD
 
-
-
+=======
+>>>>>>> 1a58f0564631df9b1f39b37ab7fa9b461ad2cf16
                     <div class="modal fade" id="edit<?php echo $id; ?>">
                         <div class="modal-background">
                             <div class="modal-card" style="margin-top: 200px;">
@@ -144,6 +145,8 @@ include 'func.php';
         <div class="column"></div>
     </div>
 </div>
+
+
 
 
 <script>
