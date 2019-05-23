@@ -63,10 +63,10 @@ include 'func.php';
                     <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
                 <?php endif; ?>
                     <td>
-                        <a data-target="#edit<?php echo $id; ?>" data-toggle="modal"><button type='button' class='btn btn-warning btn-sm '> Edit</button></a>
+                        <a data-target="#edit<?php echo $id; ?>" data-toggle="modal"><button type='button' class='btn btn-warning btn-sm' name="edit"> Edit</button></a>
                     </td>
                     <td>
-                        <a href='delete.php?id=<?php echo $row['id']; ?>'>
+                        <a href='delete.php?id=<?php echo $row['id']; ?>' id="done">
                         <b>DONE</b></a>
                     </td>
                 </tr>
@@ -87,20 +87,20 @@ include 'func.php';
                                                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                                                         <label class="font1"><b>EDIT TASK</b></label>
                                                         <div class="control">
-                                                            <input maxlength="35" class="input is-large is-warning" style="width:15em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do.." required>
+                                                            <input maxlength="35" class="input is-large is-warning" style="width:15em;" type="text" name="task" value="<?php echo $task; ?>" placeholder="to-do.."  id="edit-task"required>
                                                         </div>
                                                     </div>
                                                     <div class="column">
                                                         <label class="font1"><b>DEADLINE</b></label>
                                                         <div class="control">
-                                                            <input required class="input is-large is-warning" style="width:15em;" type="date" name="date" value="<?php echo $duedate; ?>" placeholder="dd/mm/yyy" required>
+                                                            <input required class="input is-large is-warning" style="width:15em;" type="date" name="date" value="<?php echo $duedate; ?>" placeholder="dd/mm/yyy" id="edit-date" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                     </div>
                                 </section>
                                     <footer class="modal-card-foot">
-                                        <button class="button is-danger font1 is-large" type="submit" name="submit"><b>UPDATE</b></button>
+                                        <button class="button is-danger font1 is-large" type="submit" name="submit" id="update"><b>UPDATE</b></button>
                                             </form>
                                     </footer>
                         </div>
@@ -121,28 +121,28 @@ include 'func.php';
                         <div class="column">
                             <label class="font1"><b>NEW TASK</b></label>
                             <div class="control">
-                                <input maxlength="35" class="input is-large" style="width:15em;" type="text" name="task" placeholder="to-do.." required>
+                                <input maxlength="35" class="input is-large" style="width:15em;" type="text" name="task" id="task" placeholder="to-do.." required>
                             </div>
                         </div>
 
                         <div class="column">
                             <label class="font1"><b>DEADLINE</b></label>
                             <div class="control">
-                                <input class="input is-large" style="width:15em;" type="date" name="date" placeholder="dd/mm/yyy" required>
+                                <input class="input is-large" style="width:15em;" type="date" name="date" id="date" placeholder="dd/mm/yyy" required>
                             </div>
                         </div>
                     </div>
                     <div class="control">
-                        <button class="button is-danger font1 is-large"type="submit" name="insert"><b>ADD</b></button>
+                        <button class="button is-danger font1 is-large"type="submit" name="insert" id="insert"><b>ADD</b></button>
                     </div>
                 </form>
             </div>
         </section><br>
 
         <div class="control has-text-centered" style="padding-top: 30px;">
-            <a class="font1" href="history.php" style="font-size: 15px; text-decoration: none;"><b>VIEW HISTORY</b></a>
+            <a class="font1" href="history.php" style="font-size: 15px; text-decoration: none;" id="history"><b>VIEW HISTORY</b></a>
             <br><br>
-            <a class="signUp font1" href="logout.php" ><b>LOGOUT</b></a>
+            <a class="signUp font1" href="logout.php" id="logout"><b >LOGOUT</b></a>
             
             <br><br>
         </div>

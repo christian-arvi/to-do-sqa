@@ -77,7 +77,7 @@ session_start();
         </div>            
             <div class="control has-text-centered">
                 <p class="help is-white">Haven't registered yet?</p>
-                <a class="signUp font1" href="register.php"><b>SIGN UP</b></a>
+                <a class="signUp font1" href="register.php" ><b>SIGN UP</b></a>
             </div>
     </div>
     <div class="column"></div>

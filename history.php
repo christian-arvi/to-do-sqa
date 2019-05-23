@@ -59,7 +59,7 @@ include 'func.php';
                             <td class="is-info"><b> <?php echo $task; ?> </b></td>
                             <td class="is-primary"><b> <?php echo $duedate; ?> </b></td>
                             <td>
-                                <a href='undo.php?id=<?php echo $row['id']; ?>' style="text-decoration: none;">
+                                <a href='undo.php?id=<?php echo $row['id']; ?>' style="text-decoration: none;" id="undone">
                                 Mark as<br><b> UNDONE</b></a>
                             </td>
                         </tr>
@@ -81,9 +81,9 @@ include 'func.php';
         <div class="control has-text-centered">
 
             <br>
-            <a class="font1" href="clearhistory.php" style="font-size: 15px; text-decoration: none;"><b>CLEAR HISTORY</b></a>
+            <a class="font1" href="clearhistory.php" style="font-size: 15px; text-decoration: none;" id="clear-history"><b>CLEAR HISTORY</b></a>
             <br><br>
-            <a class="signUp font1" href="home.php"><b>HOME</b></a>
+            <a class="signUp font1" href="home.php" id="home"><b>HOME</b></a>
             <br>
         </div>
 
