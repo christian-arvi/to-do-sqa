@@ -35,7 +35,7 @@ session_start();
                 <form method="post" class="font1">
                     <label class="font1"><b>USERNAME</b></label>
                     <div class="control">
-                        <input class="input is-medium" style="width:15em;" type="text" name="username" placeholder="I'm feeling happy.." required>
+                        <input class="input is-medium" style="width:15em;" type="text" name="username" maxlength="25" placeholder="I'm feeling happy.." required>
                     </div><br>
                     <label class="font1"><b>PASSWORD</b></label>
                     <div class="control">
