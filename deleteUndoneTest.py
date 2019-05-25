@@ -22,6 +22,7 @@ driver.save_screenshot('login-success.png')
 #Choose a task and select ‘Done’.
 deletetask = driver.find_element_by_id('done')
 deletetask.click()
+time.sleep(2)
 driver.save_screenshot('task-deleted.png')
 
 #Select ‘View History’ to view list of done tasks.
@@ -43,5 +44,3 @@ home.click()
 time.sleep(2)
 driver.save_screenshot('undone-task-home.png')
 driver.close()
-
-assert "No results found." not in driver.page_source

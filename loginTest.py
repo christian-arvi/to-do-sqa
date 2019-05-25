@@ -50,4 +50,3 @@ time.sleep(2)
 driver.save_screenshot('login-success.png')
 
 driver.close()
-assert "No results found." not in driver.page_source

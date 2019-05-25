@@ -82,4 +82,3 @@ driver.save_screenshot('task-added-red.png')
 time.sleep(3)
 
 driver.close()
-assert "No results found." not in driver.page_source

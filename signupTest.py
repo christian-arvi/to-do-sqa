@@ -105,5 +105,3 @@ time.sleep(2)
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 driver.save_screenshot('signup-complete.png')
 driver.close()
-
-assert "No results found." not in driver.page_source

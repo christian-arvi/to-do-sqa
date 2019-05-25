@@ -31,6 +31,5 @@ clearhistory = driver.find_element_by_id('clear-history')
 clearhistory.click()
 time.sleep(2)
 driver.save_screenshot('clear-history.png')
-driver.close()
 
-assert "No results found." not in driver.page_source
+driver.close()
