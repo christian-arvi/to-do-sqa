@@ -25,7 +25,7 @@ session_start();
                 <u>C</u>reate <u>MY</u> tas<u>K</u>
         </div>
         <div class="columns">
-        <div class="column font1 has-text-right">
+        <div class="column font1 has-text-right funky is-3">
             <p class="is-white">YOUR FUNKY<br>
             TASK PLANNER.</p>
         </div>
@@ -35,15 +35,13 @@ session_start();
                 <form method="post" class="font1">
                     <label class="font1"><b>USERNAME</b></label>
                     <div class="control">
-                        <input class="input is-medium" style="width:15em;" type="text" name="username" maxlength="25" placeholder="I'm feeling happy.." required>
+                        <input maxlength="25" class="input is-medium" style="width:15em;" type="text" name="username" placeholder="I'm feeling happy.." required>
                     </div><br>
                     <label class="font1"><b>PASSWORD</b></label>
                     <div class="control">
                         <input class="input is-medium" style="width:15em;" type="password" name="password" placeholder="Secret" required>
-                    </div><br>
-                    <div class="control has-text-centered">
-                        <button class="button is-danger font1" type="submit" name="login"><b>SIGN IN</b></button>
                     </div>
+                    
 
                     <?php
                     
@@ -61,23 +59,26 @@ session_start();
                         if($isValidLog === true):
                             header("Location: home.php");
                         else: ?>
-                            <br>Your entry was invalid. Try again.
+                            <br>The account you're trying to access does not exist. Please try again.
                         <?php endif; 
                     endif;?>
-
+                    <br><br>
+                    <div class="control has-text-centered">
+                        <button class="button is-danger font1" type="submit" name="login"><b>SIGN IN</b></button>
+                    </div>
                 </form>
             </div>
         </section>
         </div>
         <div class="column">
-            <p id="mini" class="has-text-left font1 is-white">
+            <p id="mini" class="has-text-left font1 is-white is-2">
                 CYAN<br>MAGENTA<br>YELLOW<br>BLACK
             </p>
         </div>
         </div>            
             <div class="control has-text-centered">
                 <p class="help is-white">Haven't registered yet?</p>
-                <a class="signUp font1" href="register.php" ><b>SIGN UP</b></a>
+                <a class="signUp font1" href="register.php"><b>SIGN UP</b></a>
             </div>
     </div>
     <div class="column"></div>
